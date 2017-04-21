@@ -1,6 +1,11 @@
-<h1>
-  Test Title
-</h1>
+<md-toolbar id="main-toolbar" color="primary" class="mat-elevation-z4">
+
+  App Center
+
+  <span class="app-toolbar-filler"></span>
+  <app-login></app-login>
+</md-toolbar>
+<button md-button  hidden>Upload app</button>
 <ul>
   <li *ngFor="let item of items | async">
     {{ item.name }}

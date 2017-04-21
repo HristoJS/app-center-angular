@@ -4,7 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {AngularFireModule} from 'angularfire2';
+import {AngularFireModule, AuthMethods, AuthProviders} from 'angularfire2';
+import { LoginComponent } from './login/login.component';
+import {FirebaseService} from './firebase.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule,
+} from '@angular/material';
 
 // Must export the config
 export const firebaseConfig = {
@@ -16,17 +22,28 @@ export const firebaseConfig = {
   messagingSenderId: '946954972418'
 };
 
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Google,
+  method: AuthMethods.Popup
+};
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig),
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    MdButtonToggleModule,
+    MdRippleModule,
+    MdButtonModule,
   ],
-  providers: [],
+  providers: [ FirebaseService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,5 +11,6 @@ export class AppComponent {
   constructor(af: AngularFire) {
     this.items = af.database.list('/messages');
     console.log(this.items.toString());
+
   }
 }
