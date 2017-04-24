@@ -9,8 +9,9 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 export class AppComponent {
   items: FirebaseListObservable<any[]>;
   constructor(af: AngularFire) {
-    this.items = af.database.list('/messages');
-    console.log(this.items.toString());
-
+    if (af.auth.getAuth() != null) {
+      this.items = af.database.list('/messages');
+      console.log(this.items.toString());
+    }
   }
 }

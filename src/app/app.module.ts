@@ -9,8 +9,11 @@ import { LoginComponent } from './login/login.component';
 import {FirebaseService} from './firebase.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule,
+  MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule, MdInputModule, MdCardModule, MdRadioModule,
 } from '@angular/material';
+import {AlertService} from './alert-service.service';
+import { UploadComponent } from './upload/upload.component';
+import { DragToUploadComponent } from './drag-to-upload/drag-to-upload.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -30,7 +33,9 @@ const myFirebaseAuthConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    UploadComponent,
+    DragToUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,11 @@ const myFirebaseAuthConfig = {
     MdButtonToggleModule,
     MdRippleModule,
     MdButtonModule,
+    MdInputModule,
+    MdCardModule,
+    MdRadioModule,
   ],
-  providers: [ FirebaseService ],
+  providers: [ FirebaseService, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

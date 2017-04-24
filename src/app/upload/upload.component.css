@@ -1,0 +1,15 @@
+#upload-button {
+  margin: 10px;
+}
+
+#upload-form {
+  margin: 10px;
+}
+.row {
+  margin-top: 10px;
+}
+
+textarea {
+  max-width: 400px;
+  max-height: 200px;
+}

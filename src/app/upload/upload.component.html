@@ -1,0 +1,27 @@
+<div  id="upload-form" >
+  <md-card>
+    <div class="row">
+    <md-input-container>
+      <input #appname mdInput placeholder="Application Name"  maxlength="20">
+      <md-hint>
+        {{appname.value.length}} / 20
+      </md-hint>
+    </md-input-container>
+    </div>
+    <div class="row">
+      <md-radio-group >
+        <md-radio-button value="android">Android</md-radio-button>
+        <md-radio-button value="ios">iOS</md-radio-button>
+      </md-radio-group>
+    </div>
+    <div class="row">
+      <md-input-container class="input-container">
+        <textarea mdInput placeholder="Description"></textarea>
+      </md-input-container>
+    </div>
+    <div class="row">
+      <app-drag-to-upload></app-drag-to-upload>
+    </div>
+    <button id="upload-button" md-raised-button color="accent" (click)="uploadApp()" > UPLOAD </button>
+  </md-card>
+</div>
