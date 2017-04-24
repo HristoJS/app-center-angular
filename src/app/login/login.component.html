@@ -1,0 +1,7 @@
+<div id="user-container">
+  <img *ngIf="displayPicture" id="user-pic" src="{{ displayPicture }} " />
+  <div *ngIf="userName" id="user-name"> {{ userName }} </div>
+  <button *ngIf="!isLogged" md-button  (click)="login()">LOGIN</button>
+  <button *ngIf="isLogged" md-button (click)="logout()">LOGOUT</button>
+</div>
+
