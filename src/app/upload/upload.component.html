@@ -2,26 +2,28 @@
   <md-card>
     <div class="row">
     <md-input-container>
-      <input #appname mdInput placeholder="Application Name"  maxlength="20">
+      <input mdInput #appName [(ngModel)]="appNameValue" required placeholder="Application Name"  maxlength="20">
       <md-hint>
-        {{appname.value.length}} / 20
+        {{appName.value.length}} / 20
       </md-hint>
     </md-input-container>
     </div>
     <div class="row">
-      <md-radio-group >
-        <md-radio-button value="android">Android</md-radio-button>
-        <md-radio-button value="ios">iOS</md-radio-button>
+      <md-radio-group #appType [(ngModel)]="selectedType"  >
+        <md-radio-button class="mat-radio-label-content" *ngFor="let type of types" [value]="type">{{ type }}</md-radio-button>
       </md-radio-group>
     </div>
     <div class="row">
       <md-input-container class="input-container">
-        <textarea mdInput placeholder="Description"></textarea>
+        <textarea #appDescription mdInput [(ngModel)]="appDescriptionValue" maxlength="200" required placeholder="Description"></textarea>
+        <md-hint>
+          {{appDescription.value.length}} / 200
+        </md-hint>
       </md-input-container>
     </div>
     <div class="row">
-      <app-drag-to-upload></app-drag-to-upload>
+      <app-drag-to-upload (fileEmitter)="onFileEmit($event)" ></app-drag-to-upload>
     </div>
-    <button id="upload-button" md-raised-button color="accent" (click)="uploadApp()" > UPLOAD </button>
+    <button type="submit" id="upload-button" md-raised-button color="accent" (click)="uploadApp()" > UPLOAD </button>
   </md-card>
 </div>

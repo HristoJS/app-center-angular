@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {Component, Inject} from '@angular/core';
+import {FirebaseApp, FirebaseListObservable} from 'angularfire2';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,8 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 })
 export class AppComponent {
   items: FirebaseListObservable<any[]>;
-  constructor(af: AngularFire) {
-    if (af.auth.getAuth() != null) {
-      this.items = af.database.list('/messages');
-      console.log(this.items.toString());
-    }
+  constructor(@Inject(FirebaseApp) firebaseApp: firebase.app.App) {
+    const storageRef = firebaseApp.storage().ref().child('images/image.png');
+    // storageRef.put(file)...
   }
 }

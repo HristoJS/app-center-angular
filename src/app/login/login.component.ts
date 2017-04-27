@@ -1,5 +1,5 @@
 import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {FirebaseService} from '../firebase.service';
+import {FirebaseService} from '../services/firebase.service';
 import {Subscription} from 'rxjs';
 
 @Component({

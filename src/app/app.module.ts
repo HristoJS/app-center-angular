@@ -4,16 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import {AngularFireModule, AuthMethods, AuthProviders} from 'angularfire2';
+import {AngularFireModule, AuthMethods, AuthProviders, FirebaseApp} from 'angularfire2';
 import { LoginComponent } from './login/login.component';
-import {FirebaseService} from './firebase.service';
+import {FirebaseService} from './services/firebase.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule, MdInputModule, MdCardModule, MdRadioModule,
+  MdProgressBarModule,
 } from '@angular/material';
-import {AlertService} from './alert-service.service';
+import {AlertService} from './services/alert-service.service';
 import { UploadComponent } from './upload/upload.component';
 import { DragToUploadComponent } from './drag-to-upload/drag-to-upload.component';
+import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
 // Must export the config
 export const firebaseConfig = {
@@ -35,7 +37,8 @@ const myFirebaseAuthConfig = {
     AppComponent,
     LoginComponent,
     UploadComponent,
-    DragToUploadComponent
+    DragToUploadComponent,
+    NgDropFilesDirective
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,7 @@ const myFirebaseAuthConfig = {
     MdInputModule,
     MdCardModule,
     MdRadioModule,
+    MdProgressBarModule
   ],
   providers: [ FirebaseService, AlertService ],
   bootstrap: [AppComponent]
