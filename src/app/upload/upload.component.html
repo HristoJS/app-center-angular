@@ -25,5 +25,16 @@
       <app-drag-to-upload (fileEmitter)="onFileEmit($event)" ></app-drag-to-upload>
     </div>
     <button type="submit" id="upload-button" md-raised-button color="accent" (click)="uploadApp()" > UPLOAD </button>
+    <div *ngIf="progressValue" class="row">
+      <md-progress-bar
+        class="mat-progress-bar mat-primary"
+        [color]="color"
+        [mode]="determinate"
+        [value]="progressValue">
+      </md-progress-bar>
+      <div class="app-progress">
+        {{ progressValue === 100 ? 'Complete' : progressValue }} %
+      </div>
+    </div>
   </md-card>
 </div>

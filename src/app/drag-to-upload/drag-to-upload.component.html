@@ -12,12 +12,6 @@
     <div id="file-size">
       {{ item?.file.size / 1024 / 1024 | number:'.2' }} MB
     </div>
-    <md-progress-bar
-      class="mat-progress-bar mat-primary"
-      [color]="color"
-      [mode]="indeterminate"
-      [bufferValue]="bufferValue">
-    </md-progress-bar>
   </div>
 </div>
 

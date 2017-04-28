@@ -1,4 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
+import {EventEmitter, Inject, Injectable} from '@angular/core';
 import {AngularFire, FirebaseApp} from 'angularfire2';
 import {User} from '../user';
 import {Observable} from 'rxjs/Observable';
@@ -10,6 +10,7 @@ export class FirebaseService {
   public user: User;
   private storageRef;
   private appList = this.af.database.list('/apps');
+  private progressEmitter = new EventEmitter();
 
   constructor(public af: AngularFire, @Inject(FirebaseApp) firebaseApp: firebase.app.App) {
     this.storageRef = firebaseApp.storage().ref();
@@ -57,8 +58,9 @@ export class FirebaseService {
     const uploadTask = fileRef.put(fileItem.file);
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, function (snapshot) {
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-      const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-      console.log('Upload is ' + progress + '% done');
+      const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+      context.progressEmitter.emit(progress);
+      // console.log('Upload is ' + progress + '% done');
     }, function (error) {
       context.handleError(error);
     }, function () {
