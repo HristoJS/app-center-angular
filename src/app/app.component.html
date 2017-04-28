@@ -5,7 +5,10 @@
   <span class="app-toolbar-filler"></span>
   <app-login></app-login>
 </md-toolbar>
-<app-upload></app-upload>
+<a id="floating-button" md-fab class="btn-floating" [routerLink]="['/upload']" ><md-icon md-font-set="material-icons">file_upload</md-icon></a>
+
+<router-outlet></router-outlet>
+<!--<app-upload></app-upload>-->
 <ul>
   <li *ngFor="let item of items | async">
     {{ item.name }}

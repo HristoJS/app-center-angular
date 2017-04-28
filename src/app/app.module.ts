@@ -10,12 +10,14 @@ import {FirebaseService} from './services/firebase.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule, MdInputModule, MdCardModule, MdRadioModule,
-  MdProgressBarModule,
+  MdProgressBarModule, MdIconModule, MdIconRegistry,
 } from '@angular/material';
 import {AlertService} from './services/alert-service.service';
 import { UploadComponent } from './upload/upload.component';
 import { DragToUploadComponent } from './drag-to-upload/drag-to-upload.component';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
+import {AppRoutingModule} from './app-routing/app-routing.module';
+import { AppListComponentComponent } from './app-list-component/app-list-component.component';
 
 // Must export the config
 export const firebaseConfig = {
@@ -38,7 +40,8 @@ const myFirebaseAuthConfig = {
     LoginComponent,
     UploadComponent,
     DragToUploadComponent,
-    NgDropFilesDirective
+    NgDropFilesDirective,
+    AppListComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,9 @@ const myFirebaseAuthConfig = {
     MdInputModule,
     MdCardModule,
     MdRadioModule,
-    MdProgressBarModule
+    MdProgressBarModule,
+    MdIconModule,
+    AppRoutingModule
   ],
   providers: [ FirebaseService, AlertService ],
   bootstrap: [AppComponent]
