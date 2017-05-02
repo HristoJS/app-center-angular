@@ -1,5 +1,5 @@
 import {EventEmitter, Inject, Injectable} from '@angular/core';
-import {AngularFire, FirebaseApp} from 'angularfire2';
+import {AngularFire, FirebaseApp, FirebaseListObservable} from 'angularfire2';
 import {User} from '../user';
 import {Observable} from 'rxjs/Observable';
 import {FileItem} from '../directives/file-item';
@@ -83,5 +83,9 @@ export class FirebaseService {
   private handleError(error: any) {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
+  }
+
+  getAllApps() {
+    return this.af.database.list('/apps');
   }
 }
