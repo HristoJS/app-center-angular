@@ -78,3 +78,18 @@ main-toolbar.m2app-dark {
   cursor: pointer;
   box-shadow: 0px 2px 5px #666;
 }
+
+#home-button {
+  background: Transparent no-repeat;
+  color: white;
+  font-size: 16px;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+#logo {
+  height: 30px;
+  width: 28px;
+}

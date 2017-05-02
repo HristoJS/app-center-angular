@@ -1,14 +1,18 @@
 <md-toolbar id="main-toolbar" color="primary" class="mat-elevation-z4">
+  <input id="logo" type="image" src="../assets/logo.png"  [routerLink]="['/']" />
+  <button id="home-button" [routerLink]="['/']" >App Center</button>
 
-  App Center
 
   <span class="app-toolbar-filler"></span>
   <app-login></app-login>
 </md-toolbar>
-<a id="floating-button" md-fab class="btn-floating" [routerLink]="['/upload']" ><md-icon md-font-set="material-icons">file_upload</md-icon></a>
+<a id="floating-button" md-fab class="btn-floating" (click)="toggleUploadScreen()" >
+  <md-icon md-font-set="material-icons">file_upload</md-icon>
+</a>
 
 <router-outlet></router-outlet>
-<!--<app-upload></app-upload>-->
+<app-app-list-component></app-app-list-component>
+
 <ul>
   <li *ngFor="let item of items | async">
     {{ item.name }}

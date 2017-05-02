@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FirebaseListObservable} from 'angularfire2';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,18 @@ import {FirebaseListObservable} from 'angularfire2';
 })
 export class AppComponent {
   items: FirebaseListObservable<any[]>;
-  constructor() {
+  private isUploadActive = false;
+
+  constructor(private router: Router) {
+  }
+
+  toggleUploadScreen() {
+    const url = this.router.url === '/' ? '/upload' : '/';
+    this.router.navigate([url])
+      .then(() => {
+        this.isUploadActive = !this.isUploadActive;
+        console.log(this.isUploadActive);
+      })
+      .catch(reason => console.log('Unable to load upload panel: ' + reason));
   }
 }
