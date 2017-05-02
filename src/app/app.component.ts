@@ -9,7 +9,8 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   items: FirebaseListObservable<any[]>;
-  private isUploadActive = false;
+  public isUploadActive = false;
+  public isLogged = false;
 
   constructor(private router: Router) {
   }
@@ -22,5 +23,9 @@ export class AppComponent {
         console.log(this.isUploadActive);
       })
       .catch(reason => console.log('Unable to load upload panel: ' + reason));
+  }
+
+  onLogin(isLogged: boolean) {
+    this.isLogged = isLogged;
   }
 }

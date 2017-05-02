@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {FileItem} from '../directives/file-item';
+import {FileItem} from '../data/file-item';
 
 @Component({
   selector: 'app-drag-to-upload',

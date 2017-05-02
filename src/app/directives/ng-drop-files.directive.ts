@@ -1,5 +1,5 @@
 import {Directive, EventEmitter, ElementRef, HostListener, Input, Output} from '@angular/core';
-import {FileItem} from './file-item';
+import {FileItem} from '../data/file-item';
 import * as _ from 'lodash';
 
 @Directive({

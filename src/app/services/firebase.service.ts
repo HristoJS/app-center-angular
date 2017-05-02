@@ -1,8 +1,8 @@
 import {EventEmitter, Inject, Injectable} from '@angular/core';
-import {AngularFire, FirebaseApp, FirebaseListObservable} from 'angularfire2';
+import {AngularFire, FirebaseApp} from 'angularfire2';
 import {User} from '../user';
 import {Observable} from 'rxjs/Observable';
-import {FileItem} from '../directives/file-item';
+import {FileItem} from '../data/file-item';
 import * as firebase from 'firebase/app';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class FirebaseService {
   private appList = this.af.database.list('/apps');
   private progressEmitter = new EventEmitter();
 
-  constructor(public af: AngularFire, @Inject(FirebaseApp) firebaseApp: firebase.app.App) {
+  constructor(public af: AngularFire, @Inject(FirebaseApp) firebaseApp) {
     this.storageRef = firebaseApp.storage().ref();
     this.af.auth.subscribe(user => {
       if (user) {
@@ -27,7 +27,10 @@ export class FirebaseService {
   // Auth
 
   login() {
-    return this.af.auth.login().then(result => this.saveUser(result.auth.uid, result.auth.displayName, result.auth.photoURL));
+    return this.af.auth.login().then(result => {
+      this.saveUser(result.auth.uid, result.auth.displayName, result.auth.photoURL);
+      window.location.reload();
+    });
   }
 
   logout() {

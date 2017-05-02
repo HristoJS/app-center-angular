@@ -1,6 +1,6 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FirebaseService} from '../services/firebase.service';
-import {Subscription} from 'rxjs';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +10,11 @@ import {Subscription} from 'rxjs';
 
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  private userName;
-  private displayPicture;
-  private sub: Subscription;
-  private isLogged: boolean;
+  public userName;
+  public displayPicture;
+  public sub: Subscription;
+  public isLogged: boolean;
+  @Output() isLoggedEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private firebaseService: FirebaseService) {
   }
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.sub = this.firebaseService.isAuthenticated().subscribe(auth => {
       console.log(auth);
       this.isLogged = auth;
+      this.isLoggedEmitter.emit(auth);
       if (auth) {
         this.userName = auth.auth.displayName;
         this.displayPicture = auth.auth.photoURL;

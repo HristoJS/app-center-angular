@@ -4,10 +4,13 @@
 
 
   <span class="app-toolbar-filler"></span>
-  <app-login></app-login>
+  <app-login (isLoggedEmitter)="onLogin($event)"></app-login>
 </md-toolbar>
+
 <router-outlet></router-outlet>
+
 <app-list-component></app-list-component>
-<a id="floating-button" md-fab class="btn-floating" (click)="toggleUploadScreen()" >
+
+<a id="floating-button" *ngIf="isLogged" md-fab class="btn-floating" (click)="toggleUploadScreen()" >
   <md-icon md-font-set="material-icons">file_upload</md-icon>
 </a>

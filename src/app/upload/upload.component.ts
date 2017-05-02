@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FileItem} from '../directives/file-item';
+import {FileItem} from '../data/file-item';
 import {FirebaseService} from '../services/firebase.service';
 import {AlertService} from '../services/alert-service.service';
 import {Router} from '@angular/router';
@@ -10,14 +10,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
-  private appNameValue: string;
-  private appDescriptionValue: string;
-  private firebaseService;
-  private file: FileItem;
-  private types = ['Android', 'iOS'];
-  private selectedType: string;
-  private progressValue;
-  private uploadComplete = false;
+  public appNameValue: string;
+  public appDescriptionValue: string;
+  public firebaseService;
+  public file: FileItem;
+  public types = ['Android', 'iOS'];
+  public selectedType: string;
+  public progressValue;
+  public uploadComplete = false;
 
   constructor(firebaseService: FirebaseService, private router: Router) {
     this.firebaseService = firebaseService;

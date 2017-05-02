@@ -10,7 +10,7 @@
     </div>
     <div class="row">
       <md-radio-group #appType [(ngModel)]="selectedType">
-        <md-radio-button id="radio-button" *ngFor="let type of types" [value]="type">{{ type }}</md-radio-button>
+        <md-radio-button class="radio-button" *ngFor="let type of types" [value]="type">{{ type }}</md-radio-button>
       </md-radio-group>
     </div>
     <div class="row">

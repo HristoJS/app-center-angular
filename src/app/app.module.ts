@@ -17,7 +17,7 @@ import { UploadComponent } from './upload/upload.component';
 import { DragToUploadComponent } from './drag-to-upload/drag-to-upload.component';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 import {AppRoutingModule} from './app-routing/app-routing.module';
-import { AppListComponentComponent } from './app-list-component/app-list-component.component';
+import { AppListComponentComponent } from './app-list/app-list.component';
 
 // Must export the config
 export const firebaseConfig = {
