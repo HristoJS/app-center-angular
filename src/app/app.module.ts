@@ -10,7 +10,7 @@ import {FirebaseService} from './services/firebase.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonToggleModule, MdToolbarModule, MdRippleModule, MdButtonModule, MdInputModule, MdCardModule, MdRadioModule,
-  MdProgressBarModule, MdIconModule, MdIconRegistry,
+  MdProgressBarModule, MdIconModule, MdIconRegistry, MdGridListModule,
 } from '@angular/material';
 import {AlertService} from './services/alert-service.service';
 import { UploadComponent } from './upload/upload.component';
@@ -58,7 +58,8 @@ const myFirebaseAuthConfig = {
     MdRadioModule,
     MdProgressBarModule,
     MdIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MdGridListModule
   ],
   providers: [ FirebaseService, AlertService ],
   bootstrap: [AppComponent]

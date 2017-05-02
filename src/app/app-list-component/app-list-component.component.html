@@ -1,0 +1,22 @@
+<md-grid-list class="mat-grid-list" cols="4" rowHeight="400px" >
+  <md-grid-tile rowspan="1" colspan="1" class="mat-grid-tile" *ngFor="let app of apps | async" >
+    <md-card id="app-list-card">
+      <md-card-header>
+        <div md-card-avatar class="header-image" [ngStyle]="{background: 'url(' + app.image + ')'}"></div>
+        <md-card-title class="mat-card-title">{{ app.name }}</md-card-title>
+        <md-card-subtitle>{{ app.type }}</md-card-subtitle>
+      </md-card-header>
+      <img md-card-image class="mat-card-image" *ngIf="app.type === 'Android' " src="../../assets/android.png">
+      <img md-card-image class="mat-card-image" *ngIf="app.type === 'iOS' " src="../../assets/ios.png">
+      <md-card-content>
+        <p id="app-description" maxlength="10">
+          {{ app.description }}
+        </p>
+      </md-card-content>
+      <md-card-actions>
+        <a md-button href="{{ app.downloadURL }}">DOWNLOAD</a>
+        <a md-button href="https://www.facebook.com">SHARE</a>
+      </md-card-actions>
+    </md-card>
+  </md-grid-tile>
+</md-grid-list>

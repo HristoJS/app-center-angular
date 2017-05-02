@@ -6,15 +6,8 @@
   <span class="app-toolbar-filler"></span>
   <app-login></app-login>
 </md-toolbar>
+<router-outlet></router-outlet>
+<app-list-component></app-list-component>
 <a id="floating-button" md-fab class="btn-floating" (click)="toggleUploadScreen()" >
   <md-icon md-font-set="material-icons">file_upload</md-icon>
 </a>
-
-<router-outlet></router-outlet>
-<app-app-list-component></app-app-list-component>
-
-<ul>
-  <li *ngFor="let item of items | async">
-    {{ item.name }}
-  </li>
-</ul>
